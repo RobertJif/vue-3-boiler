@@ -1,0 +1,23 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "env.d.ts",
+    "global.d.ts",
+    "tic-tac-toe.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "src/components/**/*.vue",
+    "src/**/**/*.ts",
+
+    "src/types/**/*.ts"
+  ],
+  "exclude": ["src/**/__tests__/*", "postcss.config.js"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["element-plus/global"]
+  }
+}

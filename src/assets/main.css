@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Color */
+  --color-primary-100: #ecf0ff;
+  --color-primary-200: #1443eb;
+  --color-primary-300: #0a2275;
+
+  /* Secondary Color */
+  --color-secondary-100: #fff8e0;
+  --color-secondary-200: #ffc300;
+  --color-secondary-300: #ba8e00;
+  --color-secondary-400: #5c4700;
+
+  /* Neutral Color */
+  --color-neutral-100: #f7f7f7;
+  --color-neutral-200: #eaeaea;
+  --color-neutral-300: #bfbfbf;
+  --color-neutral-400: #7f7f7f;
+  --color-neutral-500: #686868;
+  --color-neutral-600: #505050;
+  --color-neutral-700: #2b2b2b;
+  --color-neutral-800: #1d1d1d;
+  --color-neutral-900: #161616;
+
+  /* Success Color */
+  --color-success-100: #eefae7;
+  --color-success-200: #6ec03f;
+  --color-success-300: #284716;
+
+  /* Info Color */
+  --color-info-100: #eef7ff;
+  --color-info-200: #1890ff;
+  --color-info-300: #053d72;
+
+  /* Warning Color */
+  --color-warning-100: #fff8ec;
+  --color-warning-200: #e19c12;
+  --color-warning-300: #6c4901;
+
+  /* Error Color */
+  --color-error-100: #ffecec;
+  --color-error-200: #f01818;
+  --color-error-300: #6d0101;
+
+  /* Tint Color */
+  --color-tint-100: #1d1d1d80;
+  --color-tint-200: #1d1d1d4d;
+  --color-tint-300: #1d1d1d0d;
+
+  /* Breakpoints */
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1280px;
+
+  /* Typography */
+  --font-size-xs: 12;
+  --font-size-sm: 14;
+  --font-size-md: 16;
+  --font-size-lg: 18;
+}
+
+body {
+  color: var(--color-neutral-100);
+  background-color: var(--color-neutral-900);
+  font-family:
+    Ubuntu system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+@layer components {
+  .skeleton {
+    @apply animate-pulse bg-neutral-600;
+  }
+  .base-input {
+    @apply shadow appearance-none border text-neutral-700 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-100 {
+    @apply from-primary-200 to-primary-300;
+  }
+}
