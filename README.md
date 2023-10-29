@@ -1,4 +1,4 @@
-# BTech Web Template
+# Vue Web Template
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -33,7 +33,9 @@ pnpm lint
 - [Mermaid](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) to help see graph in docs
 
 ## Project Structure
+
 ### This is the main project structure
+
 ```go
 ├── docs // this are the documentations for app logic
 ├── src
@@ -72,14 +74,14 @@ pnpm lint
 │   |   |   ├── cookieStorage.ts // getCookie, setCookie
 │   |   |   ├── dateFormatter.ts // today, toDateShort, lastMonth
 │   |   |   ├── numberFormatter.ts // toMoney, toDecimal, toCount
-│   ├── router 
+│   ├── router
 │   |   ├── report
 │   |   |   ├── monthly.ts // site.com/report/monthly/*
 │   |   |   ├── profit.ts // site.com/report/profit/*
 │   |   ├── user.ts // site.com/user/*
 │   ├── stores // global refs
-│   |   ├── auth.ts 
-│   |   ├── layout.ts 
+│   |   ├── auth.ts
+│   |   ├── layout.ts
 │   ├── views
 │   |   ├── report
 │   |   |   ├── monthly
@@ -98,12 +100,16 @@ pnpm lint
 ├── pnpm-lock.yaml
 └── .gitignore
 ```
+
 ## Committing Changes
-#### Commit your changes with message as follow 
+
+#### Commit your changes with message as follow
+
 - `[T-5000] Create form for Register - add new page for register`
 - `[T-5000] Create form for Register - update unit test for register page`
 
 ## Dependencies
+
 ```json
 {
   "scripts": {
@@ -150,5 +156,4 @@ pnpm lint
     "vue-tsc": "^1.8.19"
   }
 }
-
 ```
