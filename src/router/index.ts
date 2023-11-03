@@ -1,40 +1,24 @@
-import HomeView from "./../views/HomeView.vue";
-import { loadRemoteModule } from "@softarc/native-federation";
-import { defineAsyncComponent } from "vue";
-import {
-  createRouter,
-  createWebHistory,
-  type RouteComponent,
-} from "vue-router";
-const amRoutes = loadRemoteModule("am-ui", "./am-ui-app/routes");
+import type { RouteRecordRaw } from "vue-router";
+import AppVue from "./../App.vue";
+import AnotherViews from "./../views/AnotherViews.vue";
+import HomeView from "./../views/HomeViews.vue";
 
-const AMAppComponent: RouteComponent = defineAsyncComponent(() =>
-  loadRemoteModule("am-ui", "./am-ui-app")
-);
-const SHEAppComponent: RouteComponent = defineAsyncComponent(() =>
-  loadRemoteModule("she-ui", "./she-ui-app")
-);
+const routes: RouteRecordRaw[] = [
+  {
+    path: "/",
+    name: "am",
+    component: AppVue,
+  },
+  {
+    path: "/home",
+    name: "am - home",
+    component: HomeView,
+  },
+  {
+    path: "/another",
+    name: "am - another",
+    component: AnotherViews,
+  },
+];
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: HomeView,
-    },
-    {
-      path: "/am",
-      name: "am",
-      component: AMAppComponent,
-      children: await amRoutes,
-    },
-    {
-      path: "/she",
-      name: "she",
-      component: SHEAppComponent,
-    },
-  ],
-});
-
-export default router;
+export default routes;

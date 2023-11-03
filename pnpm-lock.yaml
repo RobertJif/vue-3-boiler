@@ -46,6 +46,9 @@ devDependencies:
   '@vue/tsconfig':
     specifier: 0.1.3
     version: 0.1.3(@types/node@18.14.2)
+  esbuild-plugin-vue-next:
+    specifier: 0.1.4
+    version: 0.1.4(@vue/compiler-sfc@3.3.7)
   eslint:
     specifier: 8.35.0
     version: 8.35.0
@@ -1368,6 +1371,10 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
+  /convert-source-map@1.9.0:
+    resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
+    dev: true
+
   /convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
@@ -1682,6 +1689,16 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /esbuild-plugin-vue-next@0.1.4(@vue/compiler-sfc@3.3.7):
+    resolution: {integrity: sha512-n4DF5xY/GJ9DdRM4+MvV14Rrr+7xGhtv9/0xIxfzN6qSIMdXfZ6g4PVX735NYC7vGRr9KyZGRWST5jCyHQ6n5g==}
+    peerDependencies:
+      '@vue/compiler-sfc': '>=3.0.0'
+    dependencies:
+      '@vue/compiler-sfc': 3.3.7
+      convert-source-map: 1.9.0
+      hash-sum: 2.0.0
+    dev: true
 
   /esbuild-sunos-64@0.15.18:
     resolution: {integrity: sha512-On22LLFlBeLNj/YF3FT+cXcyKPEI263nflYlAhz5crxtp3yRG1Ugfr7ITyxmCmjm4vbN/dGrb/B7w7U8yJR9yw==}
@@ -2221,6 +2238,10 @@ packages:
 
   /has-unicode@2.0.1:
     resolution: {integrity: sha512-8Rf9Y83NBReMnx0gFzA8JImQACstCYWUplepDa9xprwwtmgEZUF0h/i5xSA625zB/I37EtrswSST6OXxwaaIJQ==}
+    dev: true
+
+  /hash-sum@2.0.0:
+    resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
     dev: true
 
   /hasown@2.0.0:

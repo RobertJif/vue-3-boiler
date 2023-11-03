@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useStore = defineStore("store", {
+const _useStore = defineStore("store", {
   state: () => ({ count: 0 }),
   getters: {
     getCount(): number {
@@ -16,7 +16,8 @@ export const useStore = defineStore("store", {
 
 declare global {
   interface Window {
-    useStore: typeof useStore;
+    useStore: typeof _useStore;
   }
 }
-window.useStore = useStore;
+
+export const useStore = window.useStore || _useStore;
