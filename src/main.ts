@@ -1,13 +1,12 @@
-import './assets/main.css'
+import { initFederation } from "@softarc/native-federation";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import { VueQueryPlugin } from '@tanstack/vue-query'
+(async () => {
+  await initFederation({
+    "am-ui": import.meta.env.VITE_REMOTE_PATH_AM_UI,
+  });
+  await initFederation({
+    "she-ui": import.meta.env.VITE_REMOTE_PATH_SHE_UI,
+  });
 
-const app = createApp(App)
-
-app.use(router)
-app.use(VueQueryPlugin)
-
-app.mount('#app')
+  await import("./bootstrap");
+})();

@@ -1,45 +1,40 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import GameView from '@/views/GameView.vue'
-import TransactionView from '@/views/TransactionView.vue'
-import TopUpView from '@/views/TopUpView.vue'
-import ProfileView from '@/views/ProfileView.vue'
-import PlayMatchView from '@/views/PlayMatchView.vue'
+import HomeView from "./../views/HomeView.vue";
+import { loadRemoteModule } from "@softarc/native-federation";
+import { defineAsyncComponent } from "vue";
+import {
+  createRouter,
+  createWebHistory,
+  type RouteComponent,
+} from "vue-router";
+const amRoutes = loadRemoteModule("am-ui", "./am-ui-app/routes");
+
+const AMAppComponent: RouteComponent = defineAsyncComponent(() =>
+  loadRemoteModule("am-ui", "./am-ui-app")
+);
+const SHEAppComponent: RouteComponent = defineAsyncComponent(() =>
+  loadRemoteModule("she-ui", "./she-ui-app")
+);
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      path: "/",
+      name: "home",
+      component: HomeView,
     },
     {
-      path: '/game',
-      name: 'game',
-      component: GameView
+      path: "/am",
+      name: "am",
+      component: AMAppComponent,
+      children: await amRoutes,
     },
     {
-      path: '/match/:id',
-      name: 'play-match',
-      component: PlayMatchView
+      path: "/she",
+      name: "she",
+      component: SHEAppComponent,
     },
-    {
-      path: '/profile',
-      name: 'profile',
-      component: ProfileView
-    },
-    {
-      path: '/transaction',
-      name: 'transaction',
-      component: TransactionView
-    },
-    {
-      path: '/top-up',
-      name: 'top-up',
-      component: TopUpView
-    }
-  ]
-})
+  ],
+});
 
-export default router
+export default router;

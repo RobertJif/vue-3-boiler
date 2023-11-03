@@ -1,25 +1,42 @@
-import { fileURLToPath, URL } from 'node:url'
+import { federation } from "@module-federation/vite";
+import { createEsBuildAdapter } from "@softarc/native-federation-esbuild";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import path from "path";
+import { defineConfig } from "vite";
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
-// https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(async ({ command }) => ({
+  build: {
+    target: "esnext",
+  },
+  resolve:
+    command === "serve"
+      ? {
+          alias: {
+            vue: path.resolve(
+              __dirname,
+              "./node_modules/vue/dist/vue.runtime.esm-bundler.js"
+            ),
+            pinia: path.resolve(
+              __dirname,
+              "./node_modules/pinia/dist/pinia.mjs"
+            ),
+          },
+        }
+      : {},
   plugins: [
-    vue(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()]
+    await federation({
+      options: {
+        workspaceRoot: __dirname,
+        outputPath: "dist",
+        tsConfig: "tsconfig.json",
+        federationConfig: "module-federation/federation.config.cjs",
+        verbose: false,
+        dev: command === "serve",
+      },
+      adapter: createEsBuildAdapter({ plugins: [] }),
     }),
-    Components({
-      resolvers: [ElementPlusResolver()]
-    })
+    vue(),
+    vueJsx(),
   ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
-})
+}));
